@@ -1,20 +1,24 @@
-import {useState}  from "react"
+import {useState, useRef}  from "react"
 import './App.css'
 import UseRandomJoke from './UseRandomJoke'
 
 export default function App() {
 
+const firstNameRef = useRef(null)
+const lastNameRef = useRef(null)
+
 const [firstName, setFirstName] = useState("")
 const [lastName, setLastName] = useState("")
 
-   const joke = UseRandomJoke("daniel","martha");
+   const joke = UseRandomJoke(firstName,lastName);
 
 
 
 
    function jokeGenerator(event){
     event.preventDefault();
-  
+    setFirstName(firstNameRef.current.value)
+    setLastName(lastNameRef.current.value)
    }
 
 return (
@@ -25,16 +29,15 @@ return (
      
           <input type="text"
           name="firstName"
-          value={firstName}
           placeholder="First Name"
-          onChange={(e)=>setFirstName(e.target.value)}
+          ref={firstNameRef}
           />
      
           <input type="text"
           name="lastName"
-          value={lastName}
           placeholder="Last Name"
-          onChange={(e)=>setLastName(e.target.value)}
+          ref={lastNameRef}
+         
           />
 
           <button onClick={jokeGenerator}>Generate Joke</button>
