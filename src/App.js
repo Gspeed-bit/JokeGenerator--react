@@ -7,8 +7,8 @@ export default function App() {
 const firstNameRef = useRef(null)
 const lastNameRef = useRef(null)
 
-const [firstName, setFirstName] = useState("")
-const [lastName, setLastName] = useState("")
+const [firstName, setFirstName] = useState("Adeyeye")
+const [lastName, setLastName] = useState("Ayodeji")
 
    const joke = UseRandomJoke(firstName,lastName);
 
@@ -17,8 +17,10 @@ const [lastName, setLastName] = useState("")
 
    function jokeGenerator(event){
     event.preventDefault();
+
     setFirstName(firstNameRef.current.value)
     setLastName(lastNameRef.current.value)
+   
    }
 
 return (
